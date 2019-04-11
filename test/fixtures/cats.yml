@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pet_owner: 1
+  fluff_ears: false
+  meow: MyString
+  personality: MyString
+  claws: false
+  fluff_type: 1
+
+two:
+  name: MyString
+  pet_owner: 1
+  fluff_ears: false
+  meow: MyString
+  personality: MyString
+  claws: false
+  fluff_type: 1

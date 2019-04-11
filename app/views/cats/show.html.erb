@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cat.name %>
+</p>
+
+
+
+<p>
+  <strong>Fluff ears:</strong>
+  <%= @cat.fluff_ears %>
+</p>
+
+<p>
+  <strong>Meow:</strong>
+  <%= @cat.meow %>
+</p>
+
+<p>
+  <strong>Personality:</strong>
+  <%= @cat.personality %>
+</p>
+
+<p>
+  <strong>Claws:</strong>
+  <%= @cat.claws %>
+</p>
+
+<p>
+  <strong>Fluff type:</strong>
+  <%= @cat.fluff_type %>
+</p>
+
+<%= link_to 'Edit', edit_cat_path(@cat) %> |
+<%= link_to 'Back', cats_path %>
