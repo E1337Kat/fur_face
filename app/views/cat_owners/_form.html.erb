@@ -1,10 +1,10 @@
-<%= form_with(model: pet_owner, local: true) do |form| %>
-  <% if pet_owner.errors.any? %>
+<%= form_with(model: cat_owner, local: true) do |form| %>
+  <% if cat_owner.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(pet_owner.errors.count, "error") %> prohibited this pet_owner from being saved:</h2>
+      <h2><%= pluralize(cat_owner.errors.count, "error") %> prohibited this pet_owner from being saved:</h2>
 
       <ul>
-      <% pet_owner.errors.full_messages.each do |message| %>
+      <% cat_owner.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,19 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :cat_id %>
+    <%= form.select(:cat_id, @cat_select_list, {include_blank: true}) %>
   </div>
 
   <div class="field">
-    <%= form.label :pets %>
-    <%= form.text_field :pets %>
+    <%= form.label :owner_id %>
+    <%= form.select(:owner_id, @owner_select_list, {include_blank: true}) %>
   </div>
 
-  <div class="field">
-    <%= form.label :actually_a_catgirl %>
-    <%= form.check_box :actually_a_catgirl %>
-  </div>
+  <%= form.hidden_field :cat_status %>
+  <%= form.hidden_field :owner_status %>
 
   <div class="actions">
     <%= form.submit %>

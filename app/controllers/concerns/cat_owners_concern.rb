@@ -3,9 +3,7 @@
 module CatOwnersConcern
   def init_created(cat_owner = @cats_owner)
     if cat_owner.valid?
-      CatOwner.bee!(cat_owner.provider, cat_owner.consumer, current_user)
-      cat_owner.created_by = current_user&.id
-      cat_owner.updated_by = current_user&.id
+      CatOwner.bee!(cat_owner.owner, cat_owner.cat)
     end
 
     cat_owner

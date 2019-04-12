@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.select(:location, Cat.locations.keys.map {|location| [location.titleize,location]}) %>
+    <%= form.select(:location, Owner.locations.keys.map {|location| [location.titleize,location]}) %>
   </div>
 
   <div class="actions">

@@ -19,10 +19,12 @@ class CatOwnersController < ApplicationController
     @cats_owner = init_created
     @cats_owner.save
 
+    CatOwner.can_pet_cat?(@cats_owner.owner, @cats_owner.cat)
+
     respond_to do |format|
       if @cats_owner.errors.blank?
         format.html do
-          flash[:success] = 'cat_owner.action.join_successful'
+          puts 'cat_owner.action.join_successful'
           send_back
         end
         format.json do
@@ -30,7 +32,7 @@ class CatOwnersController < ApplicationController
         end
       else
         format.html do
-          flash[:error] = @cats_owner.errors.full_messages
+          puts @cats_owner.errors.full_messages
           send_back
         end
         format.json do
@@ -42,9 +44,12 @@ class CatOwnersController < ApplicationController
 
   def new
     @cats_owner = CatOwner.new
-    @cats_owner.cat_meowing_status!
-    @cats_owner.owner_talking_status!
+    @cats_owner.cat_status = :eating
+    @cats_owner.owner_status = :playing
 
+    @cat_select_list = Cat.all.map { |cat| [cat.name, cat.id] }
+    @owner_select_list = Owner.all.map { |owner| [owner.name, owner.id] }
+ 
     respond_to do |format|
       format.html do
         render layout: false if request.xhr?
