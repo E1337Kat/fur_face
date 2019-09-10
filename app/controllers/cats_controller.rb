@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Controller for manipulating Cats
 class CatsController < ApplicationController
-  before_action :set_cat, only: [:show, :edit, :update, :destroy]
+  before_action :set_cat, only: %i[show edit update destroy]
 
   # GET /cats
   # GET /cats.json
@@ -9,8 +12,7 @@ class CatsController < ApplicationController
 
   # GET /cats/1
   # GET /cats/1.json
-  def show
-  end
+  def show; end
 
   # GET /cats/new
   def new
@@ -18,8 +20,7 @@ class CatsController < ApplicationController
   end
 
   # GET /cats/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cats
   # POST /cats.json
@@ -62,13 +63,14 @@ class CatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cat
-      @cat = Cat.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cat_params
-      params.require(:cat).permit(:name, :pet_owner, :fluff_ears, :meow, :personality, :claws, :fluff_type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cat
+    @cat = Cat.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cat_params
+    params.require(:cat).permit(:name, :cat_owners, :fluff_ears, :meow, :personality, :claws, :fluff_type)
+  end
 end

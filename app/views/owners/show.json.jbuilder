@@ -1,1 +1,3 @@
-json.partial! "owners/owner", owner: @owner
+# frozen_string_literal: true
+
+json.partial! 'owners/owner', owner: @owner

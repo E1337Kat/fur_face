@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class OwnersControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     @owner = owners(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get owners_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_owner_url
     assert_response :success
   end
 
-  test "should create owner" do
+  test 'should create owner' do
     assert_difference('Owner.count') do
       post owners_url, params: { owner: { actually_a_catgirl: @owner.actually_a_catgirl, location: @owner.location, name: @owner.name } }
     end
@@ -23,22 +25,22 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to owner_url(Owner.last)
   end
 
-  test "should show owner" do
+  test 'should show owner' do
     get owner_url(@owner)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_owner_url(@owner)
     assert_response :success
   end
 
-  test "should update owner" do
+  test 'should update owner' do
     patch owner_url(@owner), params: { owner: { actually_a_catgirl: @owner.actually_a_catgirl, location: @owner.location, name: @owner.name } }
     assert_redirected_to owner_url(@owner)
   end
 
-  test "should destroy owner" do
+  test 'should destroy owner' do
     assert_difference('Owner.count', -1) do
       delete owner_url(@owner)
     end

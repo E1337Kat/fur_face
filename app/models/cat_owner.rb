@@ -1,25 +1,31 @@
+# frozen_string_literal: true
+
+# Represents a cat owner. The bread and butter of this demonstration.
 class CatOwner < ApplicationRecord
-  enum cat_status: [
-    :meowing,
-    :sleeping,
-    :fucking,
-    :starving,
-    :wandering,
-    :playing,
-    :eating
-  ], _prefix: :cat, _suffix: :status
-  enum owner_status: [
-    :talking,
-    :sleeping,
-    :fucking,
-    :starving,
-    :working,
-    :playing,
-    :eating
-  ], _prefix: :owner, _suffix: :status
+  enum cat_status: {
+    meowing: 0,
+    sleeping: 1,
+    fucking: 2,
+    starving: 3,
+    wandering: 4,
+    playing: 5,
+    eating: 6
+  }, _prefix: :cat, _suffix: :status
+  enum owner_status: {
+    talking: 0,
+    sleeping: 1,
+    fucking: 2,
+    starving: 3,
+    working: 4,
+    playing: 5,
+    eating: 6
+  }, _prefix: :owner, _suffix: :status
 
   belongs_to :cat
   belongs_to :owner
+
+  has_one :name, through: :owner
+  has_many :actually_a_catgirl, through: :owner
 
   # validates :owner_id, :cat_id, :owner_status, :cat_status, presence: true
 
@@ -55,8 +61,8 @@ class CatOwner < ApplicationRecord
       .with_cat_status(cat, cat_status)
   }
 
-  def buzz!(deactivating_user = nil)
-    puts "Buzz Buzz Buzzzzz"
+  def buzz!(_deactivating_user = nil)
+    Rails.logger.info 'Buzz Buzz Buzzzzz'
   end
 
   class << self
@@ -65,7 +71,7 @@ class CatOwner < ApplicationRecord
     # @param [User] one_user   A user in the connection.
     # @param [User] other_user Another user in the connection.
     #
-    # @return [PetOwner] The connection.
+    # @return [CatOwner] The connection.
     def active_connection(one_user, other_user)
       CatOwner.with_owner_cat(one_user, other_user).first || CatOwner.with_owner_cat(other_user, one_user).first
     end
@@ -81,8 +87,8 @@ class CatOwner < ApplicationRecord
       if existing_connection.present? &&
          !%w[talking eating].include?(existing_connection.owner_status) &&
          !%w[meowing eating].include?(existing_connection.cat_status)
-        raise StandardError, 'owner.client_requests.already_connected' if existing_connection.owner_talking_status? && existing_connection.cat_meowing_status?
-        raise StandardError, 'verification_code_validation.blocked' if existing_connection.owner_fucking_status? && existing_connection.cat_fucking_status?
+        raise StandardError, 'owner.client_requests.already_connected' if existing_connection.conversing?
+        raise StandardError, 'verification_code_validation.blocked' if existing_connection.weird_fucking_routines?
 
         true
       else
@@ -98,5 +104,13 @@ class CatOwner < ApplicationRecord
       existing_connection = CatOwner.active_connection(provider, consumer)
       existing_connection.buzz!(updating_user) if existing_connection.present?
     end
+  end
+
+  def conversing?
+    owner_talking_status? && cat_meowing_status?
+  end
+
+  def weird_fucking_routines?
+    owner_fucking_status? && cat_fucking_status?
   end
 end

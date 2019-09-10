@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+# Controller for creating new cat owners
 class CatOwnersController < ApplicationController
   include CatOwnersConcern
 
-  class PetOwnerParams
+  # Params allowed when creating a Cat Owner
+  class CatOwnerParams
     def self.build(params)
       params.require(:cat_owner).permit(
         :owner_id,
@@ -15,16 +17,14 @@ class CatOwnersController < ApplicationController
   end
 
   def create
-    @cats_owner = CatOwner.new(PetOwnerParams.build(params))
-    @cats_owner = init_created
-    @cats_owner.save
+    create_new_cat(params)
 
     CatOwner.can_pet_cat?(@cats_owner.owner, @cats_owner.cat)
 
     respond_to do |format|
       if @cats_owner.errors.blank?
         format.html do
-          puts 'cat_owner.action.join_successful'
+          Rails.logger.info 'cat_owner.action.join_successful'
           send_back
         end
         format.json do
@@ -32,7 +32,7 @@ class CatOwnersController < ApplicationController
         end
       else
         format.html do
-          puts @cats_owner.errors.full_messages
+          Rails.logger.info @cats_owner.errors.full_messages
           send_back
         end
         format.json do
@@ -49,11 +49,19 @@ class CatOwnersController < ApplicationController
 
     @cat_select_list = Cat.all.map { |cat| [cat.name, cat.id] }
     @owner_select_list = Owner.all.map { |owner| [owner.name, owner.id] }
- 
+
     respond_to do |format|
       format.html do
         render layout: false if request.xhr?
       end
     end
+  end
+
+  private
+
+  def create_new_cat(params)
+    @cats_owner = CatOwner.new(CatOwnerParams.build(params))
+    @cats_owner = init_created
+    @cats_owner.save
   end
 end

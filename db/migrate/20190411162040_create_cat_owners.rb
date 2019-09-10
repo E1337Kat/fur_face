@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create the cat owners db table
 class CreateCatOwners < ActiveRecord::Migration[5.2]
   def change
     create_table :cat_owners do |t|

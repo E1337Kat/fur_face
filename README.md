@@ -1,24 +1,21 @@
-# README
+# Fur Face
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fur Face is a basic rails app I made to bet understand the has_many and belongs to relationships between two models. It features two models `Cat` and `Owner`, and a third model which joins them `CatOwner`.
 
-Things you may want to cover:
+I created this as a learning resource for myself, and I hope others that might stumble accross it will learn from it as well. Someday I might write a blog post that explains everything better, or even just put it into this readme, but I forgot about this project till github mentioned some vulnerabilities in the gems. I am just gonna do basic upkeep on this project for now.
 
-* Ruby version
+## Setup
 
-* System dependencies
+Fur Face runs on `ruby-2.6.1` with `rails-5.2.2`
 
-* Configuration
+I only use the standard test suite for now, but I would like to switch to rspec at somepoint in the future.
 
-* Database creation
+We use mysql2 gem to interface with a mySQL db server. There are plenty of tutorials that explain how to set up a rails app with mySQL, so I will leave that out for the time being as I am quickly writing this at work instead of doing my actual work.
 
-* Database initialization
+That's basically it. Like I mentioned before, this is a hella lightweight Ruby on Rails app for demonstration purposes.
 
-* How to run the test suite
+## Contributions
 
-* Services (job queues, cache servers, search engines, etc.)
+If, for some reason, you want to help contribute, then make a github issue, make a branch, and submit a pull request! Make sure to run tests before submitting a pull request! :)
 
-* Deployment instructions
-
-* ...
+Have fun learning!

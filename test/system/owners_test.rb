@@ -1,47 +1,49 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class OwnersTest < ApplicationSystemTestCase
   setup do
     @owner = owners(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit owners_url
-    assert_selector "h1", text: "Owners"
+    assert_selector 'h1', text: 'Owners'
   end
 
-  test "creating a Owner" do
+  test 'creating a Owner' do
     visit owners_url
-    click_on "New Owner"
+    click_on 'New Owner'
 
-    check "Actually a catgirl" if @owner.actually_a_catgirl
-    fill_in "Location", with: @owner.location
-    fill_in "Name", with: @owner.name
-    click_on "Create Owner"
+    check 'Actually a catgirl' if @owner.actually_a_catgirl
+    fill_in 'Location', with: @owner.location
+    fill_in 'Name', with: @owner.name
+    click_on 'Create Owner'
 
-    assert_text "Owner was successfully created"
-    click_on "Back"
+    assert_text 'Owner was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a Owner" do
+  test 'updating a Owner' do
     visit owners_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    check "Actually a catgirl" if @owner.actually_a_catgirl
-    fill_in "Location", with: @owner.location
-    fill_in "Name", with: @owner.name
-    click_on "Update Owner"
+    check 'Actually a catgirl' if @owner.actually_a_catgirl
+    fill_in 'Location', with: @owner.location
+    fill_in 'Name', with: @owner.name
+    click_on 'Update Owner'
 
-    assert_text "Owner was successfully updated"
-    click_on "Back"
+    assert_text 'Owner was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a Owner" do
+  test 'destroying a Owner' do
     visit owners_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "Owner was successfully destroyed"
+    assert_text 'Owner was successfully destroyed'
   end
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for a cat. It's cute.
 class Cat < ApplicationRecord
   enum fluff_type: {
     short_hair: 0,
@@ -7,6 +10,6 @@ class Cat < ApplicationRecord
     naked: 4
   }, _prefix: :cat, _suffix: :status
 
-  has_many :cat_owners
+  has_many :cat_owners, dependent: :destroy
   has_many :owners, through: :cat_owners
 end

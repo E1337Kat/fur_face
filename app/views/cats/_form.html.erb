@@ -1,7 +1,7 @@
 <%= form_with(model: cat, local: true) do |form| %>
   <% if cat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(cat.errors.count, 'error') %> prohibited this cat from being saved:</h2>
 
       <ul>
       <% cat.errors.full_messages.each do |message| %>
@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :fluff_ears %>
     <%= form.check_box :fluff_ears %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :meow %>
     <%= form.text_field :meow %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :personality %>
     <%= form.text_field :personality %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :claws %>
     <%= form.check_box :claws %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :fluff_type %>
     <%= form.select(:fluff_type, Cat.fluff_types.keys.map {|fluff| [fluff.titleize,fluff]}) %>
   </div>
 
-  <div class="actions">
+  <div class='actions'>
     <%= form.submit %>
   </div>
 <% end %>

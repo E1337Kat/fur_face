@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class CatTest < ActiveSupport::TestCase
+class CatOwnerTest < ActiveSupport::TestCase
   # test 'the truth' do
   #   assert true
   # end

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Controller for manipulating Owners
 class OwnersController < ApplicationController
-  before_action :set_owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_owner, only: %i[show edit update destroy]
 
   # GET /owners
   # GET /owners.json
@@ -9,8 +12,7 @@ class OwnersController < ApplicationController
 
   # GET /owners/1
   # GET /owners/1.json
-  def show
-  end
+  def show; end
 
   # GET /owners/new
   def new
@@ -18,8 +20,7 @@ class OwnersController < ApplicationController
   end
 
   # GET /owners/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /owners
   # POST /owners.json
@@ -62,13 +63,14 @@ class OwnersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_owner
-      @owner = Owner.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def owner_params
-      params.require(:owner).permit(:name, :actually_a_catgirl, :location)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_owner
+    @owner = Owner.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def owner_params
+    params.require(:owner).permit(:name, :actually_a_catgirl, :location)
+  end
 end
