@@ -31,3 +31,24 @@
 
 en:
   hello: "Hello world"
+  cat:
+    name_label: "Name:"
+    fluff_ears_label: "Fluff ears:"
+    meow_label: "Meow:"
+    personality_label: "Personality:"
+    claws_label: "Claws:"
+    fluff_type_label: "Fluff type:"
+    owners:
+      label: "Ownyaas:"
+      id: "Ownyaa ID"
+      name: "Ownyaa Name"
+      actions: "Actions"
+  owner:
+    name_label: "Name:"
+    actually_a_catgirl_label: "Actually a catgirl:"
+    location_label: "Location:"
+    cats:
+      label: "Kttiys:"
+      id: "Cat ID"
+      name: "Cat Name"
+      actions: "Actions"

@@ -24,6 +24,8 @@ class CatOwner < ApplicationRecord
   belongs_to :cat
   belongs_to :owner
 
+  validates :cat_id, uniqueness: { scope: :owner_id }
+
   has_one :name, through: :owner
   has_many :actually_a_catgirl, through: :owner
 
