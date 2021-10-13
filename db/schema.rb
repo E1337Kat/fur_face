@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_182501) do
+ActiveRecord::Schema.define(version: 2021_10_13_194519) do
 
   create_table "cat_owners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "cat_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_182501) do
     t.integer "owner_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cat_id", "owner_id"], name: "index_cat_owners_on_cat_id_and_owner_id", unique: true
     t.index ["cat_id"], name: "index_cat_owners_on_cat_id"
     t.index ["owner_id"], name: "index_cat_owners_on_owner_id"
   end

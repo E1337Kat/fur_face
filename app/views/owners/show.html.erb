@@ -1,18 +1,41 @@
 <p id='notice'><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('owner.name_label') %></strong>
   <%= @owner.name %>
 </p>
 
 <p>
-  <strong>Actually a catgirl:</strong>
+  <strong><%= t('owner.actually_a_catgirl_label') %></strong>
   <%= @owner.actually_a_catgirl %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong><%= t('owner.location_label') %></strong>
   <%= @owner.location %>
+</p>
+
+<p>
+  <strong><%= t('owner.cats.label') %></strong>
+  <table class='cat-ownyaas'>
+  <thead>
+    <tr>
+      <th class="cat-ownyaas-id-header">
+        <%= t('owner.cats.id') %>
+      </th>
+      <th class="cat-ownyaas-name-header">
+        <%= t('owner.cats.name') %>
+      </th>
+      <th class="cat-ownyaas-action-header" >
+        <%= t('owner.cats.actions') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'cats_list',
+               locals: { cats: @owner.cats, the_colspan: 3 } %>
+  </tbody>
+</table>
 </p>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |

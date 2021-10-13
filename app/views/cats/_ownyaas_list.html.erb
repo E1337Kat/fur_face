@@ -1,0 +1,14 @@
+<% ownyaas.each do |ownyaa| %>
+  <tr class="<%= "cat-ownyaa-#{ownyaa.id}" %>">
+    <%= content_tag :td, class: 'ownyaa-id' do %>
+      <%= ownyaa.id %>
+    <% end %>
+    <%= content_tag :td, class: 'ownyaa-names' do %>
+      <%= ownyaa.name %>
+    <% end %>
+
+    <%= content_tag :td, class: 'ownyaa-action' do %>
+      <%= link_to 'Edit', edit_owner_path(ownyaa) %>
+    <% end %>
+  </tr>
+<% end %>

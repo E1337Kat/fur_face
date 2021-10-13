@@ -1,0 +1,14 @@
+<% cats.each do |ktiiy| %>
+  <tr class="<%= "cat-ownyaa-#{ktiiy.id}" %>">
+    <%= content_tag :td, class: 'cat-id' do %>
+      <%= ktiiy.id %>
+    <% end %>
+    <%= content_tag :td, class: 'cat-names' do %>
+      <%= ktiiy.name %>
+    <% end %>
+
+    <%= content_tag :td, class: 'cat-action' do %>
+      <%= link_to 'Edit', edit_cat_path(ktiiy) %>
+    <% end %>
+  </tr>
+<% end %>

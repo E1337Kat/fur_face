@@ -1,36 +1,61 @@
 <p id='notice'><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('cat.name_label')%></strong>
   <%= @cat.name %>
 </p>
 
 
 
 <p>
-  <strong>Fluff ears:</strong>
+  <strong><%= t('cat.fluff_ears_label')%></strong>
   <%= @cat.fluff_ears %>
 </p>
 
 <p>
-  <strong>Meow:</strong>
+  <strong><%= t('cat.meow_label')%></strong>
   <%= @cat.meow %>
 </p>
 
 <p>
-  <strong>Personality:</strong>
+  <strong><%= t('cat.personality_label')%></strong>
   <%= @cat.personality %>
 </p>
 
 <p>
-  <strong>Claws:</strong>
+  <strong><%= t('cat.claws_label')%></strong>
   <%= @cat.claws %>
 </p>
 
 <p>
-  <strong>Fluff type:</strong>
+  <strong><%= t('cat.fluff_type_label')%></strong>
   <%= @cat.fluff_type %>
 </p>
+
+<p>
+  <strong><%= t('cat.owners.label')%></strong>
+  <table class='cat-ownyaas'>
+  <thead>
+    <tr>
+      <th class="cat-ownyaas-id-header">
+        <%= t('cat.owners.id') %>
+      </th>
+      <th class="cat-ownyaas-name-header">
+        <%= t('cat.owners.name') %>
+      </th>
+      <th class="cat-ownyaas-action-header" >
+        <%= t('cat.owners.actions') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'ownyaas_list',
+               locals: { ownyaas: @cat.owners, the_colspan: 3 } %>
+  </tbody>
+</table>
+</p>
+
+
 
 <%= link_to 'Edit', edit_cat_path(@cat) %> |
 <%= link_to 'Back', cats_path %>
